@@ -11,8 +11,10 @@
 	<nav>
 		<% if current_user %> 
 		  <%= link_to "Logout", logout_path, method: "delete" %>
+		  <!-- change this to favorites link and add to routes -->
+		  <%= link_to "Favorites", logout_path, method: "delete" %>
 		<% else %> 
-  		<%= link_to "Login", new_session_path %> 
+  		<%= link_to "Login", login_path %> 
 		<% end %>
 	</nav>
 
