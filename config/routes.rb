@@ -13,4 +13,7 @@ Rails.application.routes.draw do
 
   # user signout
   delete '/logout' => 'sessions#destroy', as: 'logout'
+
+  # login with spotify
+  get "/auth/:provider/callback" => "sessions#create"
 end

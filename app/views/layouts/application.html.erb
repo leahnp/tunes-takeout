@@ -10,11 +10,11 @@
 	<h1>Welcome to Tune and Takeout!</h1>
 	<nav>
 		<% if current_user %> 
-		  <%= link_to "Logout", logout_path, method: "delete" %>
+		  <%= link_to "Log Out", logout_path, method: :delete if current_user%>
 		  <!-- change this to favorites link and add to routes -->
 		  <%= link_to "Favorites", logout_path, method: "delete" %>
 		<% else %> 
-  		<%= link_to "Login", login_path %> 
+  		<%= link_to "Log In", "/auth/spotify" unless current_user %>
 		<% end %>
 	</nav>
 
@@ -22,3 +22,4 @@
 
 </body>
 </html>
+ \

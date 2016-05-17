@@ -2,7 +2,7 @@
 <%= form_tag search_path do %>
   <%= label_tag :keyword %>
   <%= text_field_tag :keyword %>
-  <%= submit_tag %>
+  <%= submit_tag("Search") %>
 <% end %>
 
 <%= render partial: 'suggestion' %>
