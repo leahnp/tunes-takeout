@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'suggestions#index'
 
   # retrieve search term from user
-  post '/suggestions' => 'suggestions#favorite', as: 'search'
+  post '/suggestions' => 'suggestions#show', as: 'search'
 
   # user signin
   get '/signin' => 'users#new', as: 'login'
