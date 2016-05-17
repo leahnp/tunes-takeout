@@ -53,6 +53,16 @@ module TunesTakeoutWrapper
     return yelp_array
   end
 
+  def self.get_spotify_arrays(suggestions)
+    music_type_array = []
+    music_id_array = []
+    suggestions.each do |s|
+      music_id_array << s["music_id"]
+      music_type_array << s["music_type"]
+    end
+    return music_type_array, music_id_array
+  end
+
   def favorite(user, suggestion)
     # call API and say user favorited suggestion
   end
