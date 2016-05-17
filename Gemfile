@@ -29,6 +29,10 @@ gem 'pry-rails'
 
 gem 'yelp', require: 'yelp'
 
+gem "omniauth"
+
+gem "omniauth-github"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
