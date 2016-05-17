@@ -31,7 +31,7 @@ gem 'yelp', require: 'yelp'
 
 gem "omniauth"
 
-gem "omniauth-github"
+gem "omniauth-spotify"
 
 gem 'omniauth-oauth2', '~> 1.3.1'
 
