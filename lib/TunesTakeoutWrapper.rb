@@ -35,7 +35,7 @@ require 'httparty'
 #   #   end
 #   # end
 # end
-
+# module - a class without instance methods???
 module TunesTakeoutWrapper
   BASE_URL = "https://tunes-takeout-api.herokuapp.com/"
   # def initialize(data)
