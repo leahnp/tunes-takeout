@@ -42,7 +42,15 @@ module TunesTakeoutWrapper
   # end
 
   def self.search(keyword)
-    data = HTTParty.get(BASE_URL + "v1/suggestions/search?query=" + keyword).parsed_response
+    @data = HTTParty.get(BASE_URL + "v1/suggestions/search?query=" + keyword).parsed_response
+  end
+
+  def self.get_yelp_array(suggestions)
+    yelp_array = []
+    suggestions.each do |s|
+      yelp_array << s["food_id"]
+    end
+    return yelp_array
   end
 
   def favorite(user, suggestion)

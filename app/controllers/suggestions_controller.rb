@@ -11,6 +11,7 @@ class SuggestionsController < ApplicationController
   def show
     # keyword = params[:keyword]
     results = TunesTakeoutWrapper.search(params[:keyword])
+    yelp = TunesTakeoutWrapper.get_yelp_array(results["suggestions"])
     raise
   end
 
