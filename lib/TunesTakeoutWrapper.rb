@@ -60,7 +60,7 @@ module TunesTakeoutWrapper
       music_id_array << s["music_id"]
       music_type_array << s["music_type"]
     end
-    return music_type_array, music_id_array
+    return music_type_array.zip(music_id_array)
   end
 
   def favorite(user, suggestion)

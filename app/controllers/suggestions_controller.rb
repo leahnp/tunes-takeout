@@ -10,10 +10,9 @@ class SuggestionsController < ApplicationController
 
   def show
     # keyword = params[:keyword]
-    results = TunesTakeoutWrapper.search(params[:keyword])
-    yelp = TunesTakeoutWrapper.get_yelp_array(results["suggestions"])
-    music_type_array, music_id_array = TunesTakeoutWrapper.get_spotify_arrays(results["suggestions"])
-    raise
+    @results = TunesTakeoutWrapper.search(params[:keyword])
+    @yelp = TunesTakeoutWrapper.get_yelp_array(@results["suggestions"])
+    @spotify_array = TunesTakeoutWrapper.get_spotify_arrays(@results["suggestions"])
   end
 
 # favorites: shows all suggestions favorited by the signed-in User
