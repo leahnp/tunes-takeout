@@ -34,6 +34,9 @@ class SuggestionsController < ApplicationController
 
 # favorite: adds a suggestion into the favorite list for the signed-in User. This requires interaction with the Tunes & Takeout API.
   def favorite
+    uid = current_user.uid
+    raise
+
   end
 
 # unfavorite: removes a suggestion from the favorite list for the signed-in User. This requires interaction with the Tunes & Takeout API.
