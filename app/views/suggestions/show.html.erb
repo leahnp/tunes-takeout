@@ -4,9 +4,9 @@
 
 
 
-<div>
-	<%= @yelp_business_names.each do |business|%>
-	<%= business %>
+<span>
+	<%= @yelp_business_names.each_with_index do |business, index|%>
+	<%= business.name %>
 	<iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
 	<%end%>
-</div>
+</span><br><br>
