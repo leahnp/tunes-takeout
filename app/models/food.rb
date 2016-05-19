@@ -18,19 +18,9 @@ class Food < ActiveRecord::Base
   end
 
   def self.find(biz_id_array)
-    # parameters = { term: params[:term], limit: 16 }
-    # business id
-    # /v2/business/{id}
-
     biz_id_array.each do |biz_id|
-
       data = Yelp.client.business(biz_id)
-
-
-    # @yelp_data = HTTParty.get(BASE_URL + biz_id).parsed_response
-    # @yelp_data = HTTParty.get("https://api.yelp.com/v2/business/yelp-san-francisco").parsed_response
-    
-    FOOD_OPTIONS << self.new(data)
+      FOOD_OPTIONS << self.new(data)
     end
     return FOOD_OPTIONS
   end

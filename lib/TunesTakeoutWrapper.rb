@@ -70,6 +70,17 @@ module TunesTakeoutWrapper
   def get_favorites(user)
     # call API to get all favorites for user
   end
+
+  def self.top(n)
+    return_data = []
+    data = HTTParty.get(BASE_URL + "v1/suggestions/top?limit=" + n.to_s).parsed_response
+    id_array = data["suggestions"]
+    id_array.each do |id|
+      a = HTTParty.get(BASE_URL + "v1/suggestions/" + id).parsed_response
+      return_data << a
+    end
+    return return_data
+  end
 end
 
 # results = TunesTakeoutWrapper.search("avocado")

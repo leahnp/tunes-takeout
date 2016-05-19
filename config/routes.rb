@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   # user signout
   delete '/logout' => 'sessions#destroy', as: 'logout'
 
+  # let a user favorite a pairing
+  post '/favorite' => 'suggestions#favorite', as: 'favorite'
+
   # login with spotify
   get "/auth/:provider/callback" => "sessions#create"
 end

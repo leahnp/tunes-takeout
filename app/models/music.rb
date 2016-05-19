@@ -24,7 +24,6 @@ class Music < ActiveRecord::Base
       # break out id and music type
       type = array[0]
       id = array[1]
-
       # pass info/id to spotify 
       if type == "artist"
         data = RSpotify::Artist.find(id)

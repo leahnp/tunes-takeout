@@ -1,20 +1,37 @@
 <h1>Describe in one word what you are looking for tonight</h1>
-<%= form_tag search_path do %>
-  <%= label_tag :keyword %>
-  <%= text_field_tag :keyword %>
-  <%= submit_tag("Search") %>
+
+<% if current_user %>
+	<%= form_tag search_path do %>
+	  <%= label_tag :keyword %>
+	  <%= text_field_tag :keyword %>
+	  <%= submit_tag("Search") %>
+	<% end %>
 <% end %>
 
 <%= render partial: 'suggestion' %>
-<iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:album:2ISmuffluvod3dC48YlG8k" width="300" height="380" frameborder="0" allowtransparency="true"></iframe><br>
-<iframe src="http://open.spotify.com/track/2TpxZ7JUBn3uw46aR7qd6V" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-<iframe src="http://open.spotify.com/artist/1jRxRdhY0kovY97tZqCEjs" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
 
-<iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-
-
-
-
-spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf
-
-http://open.spotify.com/track/2TpxZ7JUBn3uw46aR7qd6V
+<h2>Top 20 Tune-Takeout Pairings</h2>
+<table>
+		<%= @yelp_business_names.each_with_index do |business, index|%>
+		<% paired_tune = @spotify_info[index] %>
+	<tr>
+		<td>
+			<h3>Favorite this pairing!</h3>
+			<%=link_to "favorite this", favorite_path, method: :post %>
+<!-- 			image_tag("http://i.imgur.com/kh8F1Pr.png"), {method: "post", -->
+		</td>
+		<td>
+			<%=image_tag("#{business.image_url}")%>
+			<ul>
+				<li><%= link_to business.name, business.url %></li>
+				<li>Phone: <%= business.phone %></li>
+				<li>Addess: <%= business.address %></li>
+			</ul>
+		</td>
+		<td>
+			<iframe src="https://embed.spotify.com/?uri=spotify:user:#{paired_tune.uri}" width="300" height="250" frameborder="0" allowtransparency="true"></iframe>
+		</td>
+	</tr>
+	<%end%>
+</table>
+<br><br>

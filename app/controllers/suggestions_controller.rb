@@ -6,6 +6,15 @@ class SuggestionsController < ApplicationController
 
 # index: shows top 20 suggestions, ranked by total number of favorites
   def index
+    @yelp = []
+    @spotify_array = []
+    @top_pairs = TunesTakeoutWrapper.top(20)
+    @top_pairs.each do |pair|
+      @yelp << TunesTakeoutWrapper.get_yelp_array([pair["suggestion"]])[0]
+      @spotify_array << TunesTakeoutWrapper.get_spotify_arrays([pair["suggestion"]])[0]
+    end
+    @yelp_business_names = Food.find(@yelp)
+    @spotify_info = Music.find(@spotify_array)
   end
 
   def show
