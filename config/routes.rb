@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # retrieve search term from user
   post '/suggestions' => 'suggestions#show', as: 'search'
+  # get '/suggestions' => 'suggestions#show'
 
   # user signin
   get '/signin' => 'users#new', as: 'login'

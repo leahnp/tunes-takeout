@@ -36,7 +36,6 @@ class Music < ActiveRecord::Base
       end
     end
     # return array of instances
-    raise
     return SPOTIFY_INSTANCES
   end
 end

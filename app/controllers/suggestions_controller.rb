@@ -15,7 +15,8 @@ class SuggestionsController < ApplicationController
     @spotify_array = TunesTakeoutWrapper.get_spotify_arrays(@results["suggestions"])
     @yelp_business_names = Food.find(@yelp)
     @spotify_info = Music.find(@spotify_array)
-    # raise
+    # redirect_to search_path
+    render :show
   end
 
 # favorites: shows all suggestions favorited by the signed-in User
