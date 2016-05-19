@@ -23,6 +23,8 @@ class SessionsController < ApplicationController
   
 # destroy: deletes user_id from session
   def destroy
+    session.delete(:user_id)
+    redirect_to root_path
   end
 
 
