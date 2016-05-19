@@ -14,10 +14,11 @@
 <table>
 		<%= @yelp_business_names.each_with_index do |business, index|%>
 		<% paired_tune = @spotify_info[index] %>
+		<% pair = @top_pairs[index] %>
 	<tr>
 		<td>
 			<h3>Favorite this pairing!</h3>
-			<%=link_to "favorite this", favorite_path, add_param: PAIRING ID, method: :post %>
+			<%=link_to "favorite this", favorite_path, params: {"pair_id" => pair}, method: :post %>
 <!-- 			image_tag("http://i.imgur.com/kh8F1Pr.png"), {method: "post", -->
 		</td>
 		<td>
