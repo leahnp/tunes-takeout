@@ -26,7 +26,8 @@ class Food < ActiveRecord::Base
     # @yelp_data = HTTParty.get(BASE_URL + biz_id).parsed_response
     # @yelp_data = HTTParty.get("https://api.yelp.com/v2/business/yelp-san-francisco").parsed_response
     
-      FOOD_OPTIONS << self.new(data)
+      # FOOD_OPTIONS << 
+      self.new(data)
     end
     
   end

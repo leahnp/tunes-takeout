@@ -15,6 +15,7 @@ class SuggestionsController < ApplicationController
     @spotify_array = TunesTakeoutWrapper.get_spotify_arrays(@results["suggestions"])
 
     test = Food.find(@yelp)
+    spot_test = Music.find(@spotify_array)
     raise
   end
 
