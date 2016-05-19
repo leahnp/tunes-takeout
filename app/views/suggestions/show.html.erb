@@ -7,11 +7,15 @@
 		<%= @yelp_business_names.each_with_index do |business, index|%>
 	<tr>
 		<td>
-			<%= link_to business.name, business.url %>
-			<%= index %>
+			<%=image_tag("#{business.image_url}")%>
+			<ul>
+				<li><%= link_to business.name, business.url %></li>
+				<li>Phone: <%= business.phone %></li>
+				<li>Addess: <%= business.address %></li>
+			</ul>
 		</td>
 		<td>
-			<iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="200" frameborder="0" allowtransparency="true"></iframe>
+			<iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="250" frameborder="0" allowtransparency="true"></iframe>
 		</td>
 	</tr>
 	<%end%>

@@ -25,7 +25,7 @@ class Food < ActiveRecord::Base
     biz_id_array.each do |biz_id|
 
       data = Yelp.client.business(biz_id)
-      raise
+
 
     # @yelp_data = HTTParty.get(BASE_URL + biz_id).parsed_response
     # @yelp_data = HTTParty.get("https://api.yelp.com/v2/business/yelp-san-francisco").parsed_response
