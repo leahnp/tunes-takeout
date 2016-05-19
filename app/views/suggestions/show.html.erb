@@ -5,6 +5,7 @@
 
 <table>
 		<%= @yelp_business_names.each_with_index do |business, index|%>
+		<% paired_tune = @spotify_info[index] %>
 	<tr>
 		<td>
 			<%=image_tag("#{business.image_url}")%>
@@ -15,7 +16,9 @@
 			</ul>
 		</td>
 		<td>
-			<iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="250" frameborder="0" allowtransparency="true"></iframe>
+			<%= paired_tune.uri %>
+			<iframe src="https://embed.spotify.com/?uri=spotify:user:#{paired_tune.uri}" width="300" height="250" frameborder="0" allowtransparency="true"></iframe>
+
 		</td>
 	</tr>
 	<%end%>
