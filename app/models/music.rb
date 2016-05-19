@@ -1,10 +1,12 @@
 class Music < ActiveRecord::Base
-  attr_reader :name, :images_array
+  attr_reader :name, :images_array, :uri, :type
   SPOTIFY_INSTANCES = []
 
 
   def initialize(data)
     @name = data.name
+    @uri = data.uri
+    @type = data.type
     if data.type == "track"
       album = data.album
       @images_array = album.images

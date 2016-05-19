@@ -1,4 +1,12 @@
 <h1>Your Suggestions!</h1>
+<%= @yelp_business_names%>
+<%= @spotify_info%>
 
 
-<iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+
+<div>
+	<%= @yelp_business_names.each do |business|%>
+	<%= business %>
+	<iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+	<%end%>
+</div>
