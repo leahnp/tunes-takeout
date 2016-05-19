@@ -1,12 +1,19 @@
 <h1>Your Suggestions!</h1>
-<%= @yelp_business_names%>
-<%= @spotify_info%>
 
 
 
-<span>
-	<%= @yelp_business_names.each_with_index do |business, index|%>
-	<%= business.name %>
-	<iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+
+<table>
+		<%= @yelp_business_names.each_with_index do |business, index|%>
+	<tr>
+		<td>
+			<%= link_to business.name, business.url %>
+			<%= index %>
+		</td>
+		<td>
+			<iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="200" frameborder="0" allowtransparency="true"></iframe>
+		</td>
+	</tr>
 	<%end%>
-</span><br><br>
+</table>
+<br><br>
