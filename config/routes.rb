@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   # let a user favorite a pairing
   post '/favorite' => 'suggestions#favorite', as: 'favorite'
 
+  # show list of favorites for current user
+  get '/favorites' => 'suggestions#favorites', as: 'favorites'
+
   # login with spotify
   get "/auth/:provider/callback" => "sessions#create"
 end
