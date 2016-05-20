@@ -37,7 +37,7 @@ class SuggestionsController < ApplicationController
 # favorite: adds a suggestion into the favorite list for the signed-in User. This requires interaction with the Tunes & Takeout API.
   def favorite
     user = current_user.uid
-    response = TunesTakeoutWrapper.favorite(user)
+    response = TunesTakeoutWrapper.favorite(user, params["suggestion"])
     raise
   end
 
