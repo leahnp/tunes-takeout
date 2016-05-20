@@ -15,28 +15,40 @@ class Music < ActiveRecord::Base
     end
   end
 
+  #   def self.find(hash)
+  #   hash.each do |key, value|
+  #     data = Yelp.client.business(value[:food_id])
+  #     FOOD_OPTIONS << [key, self.new(data)]
+  #   end
+  #   return FOOD_OPTIONS
+  # end
 
-  def self.find(spotify_array)
+
+  def self.find(hash, food_array)
     RSpotify.authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_CLIENT_SECRET"])
+    # go through each pairing id and add music info
+    food_array.each do |subarray|
+      # find suggestion from hash
+      suggestion_id = subarray[0]
 
+      # set id and music type
+      id = hash[suggestion_id][:music_id]
+      type = hash[suggestion_id][:music_type]
 
-    spotify_array.each do |array|
-      # break out id and music type
-      type = array[0]
-      id = array[1]
-      # pass info/id to spotify 
+      # pass info to spotify
       if type == "artist"
         data = RSpotify::Artist.find(id)
-        SPOTIFY_INSTANCES << self.new(data)
+        subarray << self.new(data)
       elsif type == "album"
         data = RSpotify::Album.find(id)
-        SPOTIFY_INSTANCES << self.new(data)
+        subarray << self.new(data)
       else
         data = RSpotify::Track.find(id)
-        SPOTIFY_INSTANCES << self.new(data)
+        subarray << self.new(data)
       end
+
     end
-    # return array of instances
-    return SPOTIFY_INSTANCES
+    return food_array
   end
+
 end

@@ -18,14 +18,12 @@ class SuggestionsController < ApplicationController
   end
 
   def show
-    # keyword = params[:keyword]
     @results = TunesTakeoutWrapper.search(params[:keyword])
     @yelp = TunesTakeoutWrapper.get_yelp_hash(@results["suggestions"])
     @yelp_array = Food.find(@yelp)
-    @spotify_array = TunesTakeoutWrapper.get_spotify_arrays(@results["suggestions"])
-    # raise
-    # @spotify_info = Music.find(@spotify_array)
-    # redirect_to search_path
+    @spotify_hash = TunesTakeoutWrapper.get_spotify_arrays(@results["suggestions"])
+    # info is array of arrays [pair_id, food_instance, music_instance]
+    @info = Music.find(@spotify_hash, @yelp_array)
     render :show
   end
 
