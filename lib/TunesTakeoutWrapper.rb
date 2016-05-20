@@ -21,13 +21,14 @@ module TunesTakeoutWrapper
   end
 
   def self.get_spotify_arrays(suggestions)
-    music_type_array = []
-    music_id_array = []
+    spotify_hash = {}
     suggestions.each do |s|
-      music_id_array << s["music_id"]
-      music_type_array << s["music_type"]
+      spotify_hash[s["id"]] = {
+      music_id: s["music_id"],
+      music_type: s["music_type"]
+    }
     end
-    return music_type_array.zip(music_id_array)
+    return spotify_hash
   end
 
   def self.favorite(user, suggestion)
