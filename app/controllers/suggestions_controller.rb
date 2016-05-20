@@ -37,9 +37,11 @@ class SuggestionsController < ApplicationController
     user = current_user.uid
     # returns hash with key "suggestion" and value is array of pair-ids
     favorites = TunesTakeoutWrapper.favorites(user)
-    favorites["suggestion"].each do |id|
-      @yelp.merge!(TunesTakeoutWrapper.get_yelp_hash([id]))
-      @spotify_hash.merge!(TunesTakeoutWrapper.get_spotify_arrays([id]))
+    favorites = favorites["suggestions"]
+    favorites_data = TunesTakeoutWrapper.search_by_pair(favorites)
+    favorites_data.each do |pair|
+      @yelp.merge!(TunesTakeoutWrapper.get_yelp_hash([pair["suggestion"]]))
+      @spotify_hash.merge!(TunesTakeoutWrapper.get_spotify_arrays([pair["suggestion"]]))
     end
     @yelp_array = Food.find(@yelp)
     # info is array of arrays [pair_id, food_instance, music_instance]
