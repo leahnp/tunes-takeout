@@ -7,7 +7,7 @@
 		<td>
 			<h3>Favorite this pairing!</h3>
 
-			<%=link_to "Favorite This", favorite_path(:pair_id => pair_id), method: :post %>
+			<%=link_to "Favorite This", favorite_path("suggestion" => pair_id), method: :post %>
 <!-- 			favorite_path(:pair_id => pair) -->
 <!-- 			image_tag("http://i.imgur.com/kh8F1Pr.png"), {method: "post", -->
 		</td>

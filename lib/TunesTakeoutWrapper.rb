@@ -31,12 +31,10 @@ module TunesTakeoutWrapper
     return spotify_hash
   end
 
-  def self.favorite(user, suggestion)
+  def self.favorite(user)
     # call API and say user favorited suggestion
-    response = HTTParty.post(BASE_URL + "v1/users/#{user}/favorites.json",
-    {
-      "suggestion": suggestion
-      })
+    response = HTTParty.post(BASE_URL + "v1/users/#{user}/favorites",
+    params["suggestion"].to_json)
     raise
   end
 
