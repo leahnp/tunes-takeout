@@ -63,8 +63,13 @@ module TunesTakeoutWrapper
     return music_type_array.zip(music_id_array)
   end
 
-  def favorite(user, suggestion)
+  def self.favorite(user, suggestion)
     # call API and say user favorited suggestion
+    response = HTTParty.post(BASE_URL + "v1/users/#{user}/favorites.json",
+    {
+      "suggestion": suggestion
+      })
+    raises
   end
 
   def get_favorites(user)

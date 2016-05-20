@@ -8,7 +8,7 @@ class SuggestionsController < ApplicationController
   def index
     @yelp = []
     @spotify_array = []
-    @top_pairs = TunesTakeoutWrapper.top(20)
+    @top_pairs = TunesTakeoutWrapper.top(9)
     @top_pairs.each do |pair|
       @yelp << TunesTakeoutWrapper.get_yelp_array([pair["suggestion"]])[0]
       @spotify_array << TunesTakeoutWrapper.get_spotify_arrays([pair["suggestion"]])[0]
@@ -34,9 +34,10 @@ class SuggestionsController < ApplicationController
 
 # favorite: adds a suggestion into the favorite list for the signed-in User. This requires interaction with the Tunes & Takeout API.
   def favorite
-    uid = current_user.uid
-    raise
+    user = current_user.uid
+    response = TunesTakeoutWrapper.favorite(user, params["pair_id"])
 
+    raise
   end
 
 # unfavorite: removes a suggestion from the favorite list for the signed-in User. This requires interaction with the Tunes & Takeout API.
