@@ -8,7 +8,19 @@ class SuggestionsController < ApplicationController
   def index
     # @yelp = []
     # @spotify_array = []
-    @top_pairs = TunesTakeoutWrapper.top(9)
+    @results = TunesTakeoutWrapper.top(9)
+    @yelp = {}
+    @spotify_hash = {}
+    @results.each do |pair|
+      @yelp.merge!(TunesTakeoutWrapper.get_yelp_hash([pair["suggestion"]]))
+      @spotify_hash.merge!(TunesTakeoutWrapper.get_spotify_arrays([pair["suggestion"]]))
+    end
+    # raise
+    @yelp_array = Food.find(@yelp)
+    
+    # info is array of arrays [pair_id, food_instance, music_instance]
+    @info = Music.find(@spotify_hash, @yelp_array)
+    raise
     # @top_pairs.each do |pair|
     #   @yelp << TunesTakeoutWrapper.get_yelp_array([pair["suggestion"]])[0]
     #   @spotify_array << TunesTakeoutWrapper.get_spotify_arrays([pair["suggestion"]])[0]
@@ -18,7 +30,9 @@ class SuggestionsController < ApplicationController
   end
 
   def show
+    # hash['suggestions'] KEY with VALUE as array of hashes include keys ("id" "food_id", "music_type", "music_id")
     @results = TunesTakeoutWrapper.search(params[:keyword])
+    # raise
     @yelp = TunesTakeoutWrapper.get_yelp_hash(@results["suggestions"])
     @yelp_array = Food.find(@yelp)
     @spotify_hash = TunesTakeoutWrapper.get_spotify_arrays(@results["suggestions"])
