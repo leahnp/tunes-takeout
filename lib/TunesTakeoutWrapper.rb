@@ -40,7 +40,7 @@ module TunesTakeoutWrapper
     # need to add error handling
   end
 
-  def get_favorites(user_id)
+  def self.favorites(user_id)
     favorites = HTTParty.get(BASE_URL + "/v1/users/#{user_id}/favorites").parsed_response
     raise
   end

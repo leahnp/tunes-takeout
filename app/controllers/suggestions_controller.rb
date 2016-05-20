@@ -32,6 +32,19 @@ class SuggestionsController < ApplicationController
 
 # favorites: shows all suggestions favorited by the signed-in User
   def favorites
+    @yelp = {}
+    @spotify_hash = {}
+    user = current_user.uid
+    # returns hash with key "suggestion" and value is array of pair-ids
+    favorites = TunesTakeoutWrapper.favorites(user)
+    favorites["suggestion"].each do |id|
+      @yelp.merge!(TunesTakeoutWrapper.get_yelp_hash([id]))
+      @spotify_hash.merge!(TunesTakeoutWrapper.get_spotify_arrays([id]))
+    end
+    @yelp_array = Food.find(@yelp)
+    # info is array of arrays [pair_id, food_instance, music_instance]
+    @info = Music.find(@spotify_hash, @yelp_array)
+    # raise
   end
 
 # favorite: adds a suggestion into the favorite list for the signed-in User. This requires interaction with the Tunes & Takeout API.
