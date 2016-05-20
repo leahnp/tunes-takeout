@@ -17,7 +17,6 @@ module TunesTakeoutWrapper
         food_id: s["food_id"]
       }
     end
-    raise
     return yelp_hash
   end
 
