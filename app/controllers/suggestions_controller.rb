@@ -6,8 +6,6 @@ class SuggestionsController < ApplicationController
 
 # index: shows top 20 suggestions, ranked by total number of favorites
   def index
-    # @yelp = []
-    # @spotify_array = []
     @results = TunesTakeoutWrapper.top(9)
     @yelp = {}
     @spotify_hash = {}
@@ -15,18 +13,9 @@ class SuggestionsController < ApplicationController
       @yelp.merge!(TunesTakeoutWrapper.get_yelp_hash([pair["suggestion"]]))
       @spotify_hash.merge!(TunesTakeoutWrapper.get_spotify_arrays([pair["suggestion"]]))
     end
-    # raise
     @yelp_array = Food.find(@yelp)
-    
     # info is array of arrays [pair_id, food_instance, music_instance]
     @info = Music.find(@spotify_hash, @yelp_array)
-
-    # @top_pairs.each do |pair|
-    #   @yelp << TunesTakeoutWrapper.get_yelp_array([pair["suggestion"]])[0]
-    #   @spotify_array << TunesTakeoutWrapper.get_spotify_arrays([pair["suggestion"]])[0]
-    # end
-    # @yelp_business_names = Food.find(@yelp)
-    # @spotify_info = Music.find(@spotify_array)
   end
 
   def show
@@ -49,7 +38,6 @@ class SuggestionsController < ApplicationController
   def favorite
     user = current_user.uid
     response = TunesTakeoutWrapper.favorite(user, params["pair_id"])
-
     raise
   end
 
