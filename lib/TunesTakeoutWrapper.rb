@@ -37,7 +37,7 @@ module TunesTakeoutWrapper
     {
       "suggestion": suggestion
       })
-    raises
+    raise
   end
 
   def get_favorites(user)
@@ -45,6 +45,7 @@ module TunesTakeoutWrapper
   end
 
   def self.top(n)
+    # return is array of arrays [pair_id, food_instance, music_instance]
     return_data = []
     data = HTTParty.get(BASE_URL + "v1/suggestions/top?limit=" + n.to_s).parsed_response
     id_array = data["suggestions"]

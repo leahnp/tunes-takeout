@@ -20,7 +20,7 @@ class SuggestionsController < ApplicationController
     
     # info is array of arrays [pair_id, food_instance, music_instance]
     @info = Music.find(@spotify_hash, @yelp_array)
-    raise
+
     # @top_pairs.each do |pair|
     #   @yelp << TunesTakeoutWrapper.get_yelp_array([pair["suggestion"]])[0]
     #   @spotify_array << TunesTakeoutWrapper.get_spotify_arrays([pair["suggestion"]])[0]

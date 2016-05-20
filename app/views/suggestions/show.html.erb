@@ -3,25 +3,3 @@
 <%= render partial: 'suggestion' %>
 
 
-<table>
-		<%= @info.each do |pair|%>
-		<%= pair_id = pair[0] %>
-		<%= food = pair[1] %>
-		<%= music = pair[2] %>
-	<tr>
-		<td>
-			<%=image_tag("#{food.image_url}")%>
-			<ul>
-				<li><%= link_to food.name, food.url %></li>
-				<li>Phone: <%= food.phone %></li>
-				<li>Addess: <%= food.address %></li>
-			</ul>
-		</td>
-		<td>
-			<%= music.uri %>
-			<iframe src="https://embed.spotify.com/?uri=spotify:user:#{paired_tune.uri}" width="300" height="250" frameborder="0" allowtransparency="true"></iframe>
-
-		</td>
-	</tr>
-	<%end%>
-</table>
