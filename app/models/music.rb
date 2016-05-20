@@ -15,15 +15,6 @@ class Music < ActiveRecord::Base
     end
   end
 
-  #   def self.find(hash)
-  #   hash.each do |key, value|
-  #     data = Yelp.client.business(value[:food_id])
-  #     FOOD_OPTIONS << [key, self.new(data)]
-  #   end
-  #   return FOOD_OPTIONS
-  # end
-
-
   def self.find(hash, food_array)
     RSpotify.authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_CLIENT_SECRET"])
     # go through each pairing id and add music info

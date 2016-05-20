@@ -1,7 +1,5 @@
 require_relative '../../lib/TunesTakeoutWrapper'
 
-# include TunesTakeoutWrapper
-
 class SuggestionsController < ApplicationController
 
 # index: shows top 20 suggestions, ranked by total number of favorites

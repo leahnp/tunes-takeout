@@ -1,11 +1,6 @@
 require 'yelp'
-# require 'httparty'
 
 class Food < ActiveRecord::Base
-  # BASE_URL = "https://api.yelp.com/v2/business/"
-  #urban-curry-san-francisco?actionlinks=True
-  # get from yelp
-
   attr_reader :name, :url, :image_url, :phone, :address
   FOOD_OPTIONS = []
 
