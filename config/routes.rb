@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   root 'suggestions#index'
 
   # retrieve search term from user
+  # should this be a get?
   post '/suggestions' => 'suggestions#show', as: 'search'
-  # get '/suggestions' => 'suggestions#show'
 
   # user signin
   get '/signin' => 'users#new', as: 'login'
@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   # let a user favorite a pairing
   post '/favorite' => 'suggestions#favorite', as: 'favorite'
+
+  # let a user unfavorite a pairing
+  delete '/favorite' => 'suggestions#destroy_favorite', as: 'destroy_favorite'
 
   # show list of favorites for current user
   get '/favorites' => 'suggestions#favorites', as: 'favorites'

@@ -10,6 +10,7 @@
 				<%=link_to "Favorite This", favorite_path("suggestion" => pair_id), method: :post %>
 			<% else %>
 				One of your faves!
+				<%=link_to "Unfavorite This", destroy_favorite_path("suggestion" => pair_id), method: :delete %>
 			<% end %>
 <!-- 			favorite_path(:pair_id => pair) -->
 <!-- 			image_tag("http://i.imgur.com/kh8F1Pr.png"), {method: "post", -->
