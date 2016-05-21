@@ -1,5 +1,5 @@
 class Music < ActiveRecord::Base
-  attr_reader :name, :images_array, :uri, :type
+  attr_reader :name, :images_array, :uri, :type, :url
   SPOTIFY_INSTANCES = []
 
 
@@ -7,6 +7,7 @@ class Music < ActiveRecord::Base
     @name = data.name
     @uri = data.uri
     @type = data.type
+    @url = data.external_urls["spotify"]
     if data.type == "track"
       album = data.album
       @images_array = album.images
@@ -29,6 +30,7 @@ class Music < ActiveRecord::Base
       # pass info to spotify
       if type == "artist"
         data = RSpotify::Artist.find(id)
+        raise
         subarray << self.new(data)
       elsif type == "album"
         data = RSpotify::Album.find(id)
