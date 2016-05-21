@@ -17,6 +17,9 @@
 		<% if current_user %> 
 		  <%= link_to "Log Out", logout_path, method: :delete if current_user%>
 		  <%= link_to "Favorites", favorites_path %>
+		  Welcome <%= current_user.name %>!
+		  <%= image_tag(current_user.photo) %>
+		  <%= link_to "Profile", current_user.profile_link %>
 		<% else %> 
   		<%= link_to "Log In", "/auth/spotify" unless current_user %>
 		<% end %>

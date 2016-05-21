@@ -30,7 +30,6 @@ class Music < ActiveRecord::Base
       # pass info to spotify
       if type == "artist"
         data = RSpotify::Artist.find(id)
-        raise
         subarray << self.new(data)
       elsif type == "album"
         data = RSpotify::Album.find(id)
