@@ -4,6 +4,9 @@ class SuggestionsController < ApplicationController
 
 # index: shows top 20 suggestions, ranked by total number of favorites
   def index
+    favorites = TunesTakeoutWrapper.favorites(current_user.uid)
+    # array of pairs user has already favorited
+    @favorites = favorites["suggestions"]
     @results = TunesTakeoutWrapper.top(9)
     @yelp = {}
     @spotify_hash = {}
