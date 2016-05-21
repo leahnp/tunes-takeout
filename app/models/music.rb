@@ -15,7 +15,7 @@ class Music < ActiveRecord::Base
     end
   end
 
-  def self.find(hash, food_array)
+  def self.find(spotify_hash, food_array)
     RSpotify.authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_CLIENT_SECRET"])
     # go through each pairing id and add music info
     food_array.each do |subarray|
@@ -23,8 +23,8 @@ class Music < ActiveRecord::Base
       suggestion_id = subarray[0]
 
       # set id and music type
-      id = hash[suggestion_id][:music_id]
-      type = hash[suggestion_id][:music_type]
+      id = spotify_hash[suggestion_id][:music_id]
+      type = spotify_hash[suggestion_id][:music_type]
 
       # pass info to spotify
       if type == "artist"

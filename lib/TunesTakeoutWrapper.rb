@@ -20,13 +20,13 @@ module TunesTakeoutWrapper
     return yelp_hash
   end
 
-  def self.get_spotify_arrays(suggestions)
+  def self.get_spotify_hash(suggestions)
     spotify_hash = {}
     suggestions.each do |s|
       spotify_hash[s["id"]] = {
-      music_id: s["music_id"],
-      music_type: s["music_type"]
-    }
+        music_id: s["music_id"],
+        music_type: s["music_type"]
+      }
     end
     return spotify_hash
   end
@@ -63,5 +63,3 @@ module TunesTakeoutWrapper
     return return_data
   end
 end
-
-# results = TunesTakeoutWrapper.search("avocado")

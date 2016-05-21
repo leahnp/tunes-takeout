@@ -1,8 +1,8 @@
+require 'uri'
 require 'yelp'
 
 class Food < ActiveRecord::Base
   attr_reader :name, :url, :image_url, :phone, :address
-  FOOD_OPTIONS = []
 
   def initialize(data)
     @name = data.business.name
@@ -13,11 +13,17 @@ class Food < ActiveRecord::Base
   end
 
   def self.find(hash)
+    food_options = []
+
     hash.each do |key, value|
-      data = Yelp.client.business(value[:food_id])
-      FOOD_OPTIONS << [key, self.new(data)]
+      # yelp ruby API doesn't URL encoded the business id passed to it
+      # https://github.com/Yelp/yelp-ruby/issues/51
+      encoded_food_id = URI.escape(value[:food_id])
+      data = Yelp.client.business(encoded_food_id)
+      food_options << [key, self.new(data)]
     end
-    return FOOD_OPTIONS
+
+    return food_options
   end
 end
 
