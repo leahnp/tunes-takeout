@@ -39,7 +39,7 @@ class SuggestionsController < ApplicationController
     render :show
   end
 
-# favorites: shows all suggestions favorited by the signed-in User
+  # favorites: shows all suggestions favorited by the signed-in User
   def favorites
     @yelp = {}
     @spotify_hash = {}
@@ -47,8 +47,8 @@ class SuggestionsController < ApplicationController
     # returns hash with key "suggestion" and value is array of pair-ids
     favorites = TunesTakeoutWrapper.favorites(user)
     favorites = favorites["suggestions"]
-    favorites_data = TunesTakeoutWrapper.search_by_pair(favorites)
-    favorites_data.each do |pair|
+    favorites = TunesTakeoutWrapper.search_by_pair(favorites)
+    favorites.each do |pair|
       @yelp.merge!(TunesTakeoutWrapper.get_yelp_hash([pair["suggestion"]]))
       @spotify_hash.merge!(TunesTakeoutWrapper.get_spotify_hash([pair["suggestion"]]))
     end

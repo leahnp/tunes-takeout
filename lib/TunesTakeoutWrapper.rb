@@ -55,7 +55,6 @@ module TunesTakeoutWrapper
 
   def self.top(n)
     # return is array of arrays [pair_id, food_instance, music_instance]
-
     data = HTTParty.get(BASE_URL + "v1/suggestions/top?limit=" + n.to_s).parsed_response
     id_array = data["suggestions"]
     return_data = TunesTakeoutWrapper.search_by_pair(id_array)
