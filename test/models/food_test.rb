@@ -5,7 +5,6 @@ class FoodTest < ActiveSupport::TestCase
     query = {
       '123456789' => { food_id: 'fiddlehead-fine-foods-and-café-seattle' }
     }
-
     results = Food.find(query)
 
     first_result = results[0]

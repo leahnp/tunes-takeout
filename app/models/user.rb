@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
       user.name = auth_hash["info"]["name"]
       user.photo = auth_hash["info"]["image"]
       user.profile_link = auth_hash["info"]["urls"]["spotify"]
-      user.email = auth_hash["info"]["email"]      
+      user.email = auth_hash["info"]["email"]
 
       if user.save
         return user

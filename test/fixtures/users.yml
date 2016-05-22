@@ -1,0 +1,5 @@
+known_user:
+  uid: "1"
+  name: "bob"
+  provider: "spotify"
+  profile_link: "test.com"
