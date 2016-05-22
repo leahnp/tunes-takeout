@@ -2,8 +2,6 @@ require 'httparty'
 
 module TunesTakeoutWrapper
   BASE_URL = "https://tunes-takeout-api.herokuapp.com/"
-  # def initialize(data)
-  # end
 
   def self.search(keyword)
     @data = HTTParty.get(BASE_URL + "v1/suggestions/search?query=" + keyword).parsed_response
@@ -67,7 +65,6 @@ module TunesTakeoutWrapper
       a = HTTParty.get(BASE_URL + "v1/suggestions/" + id).parsed_response
       return_data << a
     end
-    # raise
     return return_data
   end
 end
