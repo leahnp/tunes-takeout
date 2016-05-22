@@ -49,7 +49,7 @@ group :development, :test do
   gem 'byebug'
   gem 'simplecov'
   gem 'pry-rails'
-  gem 'minitest-vcr'
+  # gem 'minitest-vcr'
   gem 'minitest-reporters'
   gem 'webmock'
   gem 'dotenv-rails'

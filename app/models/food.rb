@@ -1,7 +1,7 @@
 require 'uri'
 require 'yelp'
 
-class Food < ActiveRecord::Base
+class Food
   attr_reader :name, :url, :image_url, :phone, :address
 
   def initialize(data)

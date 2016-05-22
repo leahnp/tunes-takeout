@@ -1,7 +1,5 @@
-class Music < ActiveRecord::Base
+class Music
   attr_reader :name, :images_array, :uri, :type, :url
-  SPOTIFY_INSTANCES = []
-
 
   def initialize(data)
     @name = data.name
